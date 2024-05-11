@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      JavaScript 7th Edition
+      Chapter 6
+      Chapter Case
+
+      Author: hiba mohammad 
+      Date:   5.6.24
+
+      Filename: js06a.html
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <title>Chapter 6 Case Problem: Product Order</title>
+   <link rel="stylesheet" href="styles.css" />
+  
+   <style>
+
+* {
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+/* reset rules */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+   display: block;
+}
+
+body {
+   line-height: 1;
+   width: 1000px;
+   background: white;
+   margin: 0 auto;
+   font-family: Arial, Helvetica, sans-serif; 
+}
+
+ol, ul {
+   list-style: none;
+}
+
+
+/* Styles for this Project */
+
+html {
+   font-family: Verdana, Geneva, sans-serif;
+   font-size: 12px;
+   color: #D04B4B;
+}
+
+body {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-flow: row wrap;
+   flex-flow: row wrap;  
+
+   background: black;
+   max-width: 1020px;
+   min-width: 420px;
+   margin: 0px auto;
+}
+
+p {
+   font-size: 1.2em;
+   line-height: 1.4em;
+   margin: 15px;
+}
+
+
+/* Header Styles */
+
+body > header {
+   width: 100%;
+}
+
+body > header > img {
+   display: block;
+   width: 100%;
+}
+
+
+/* Section Styles */
+
+section#summary {
+   -webkit-flex: 1 1 50px;
+   flex: 1 1 50px;
+   padding: 20px 0px 10px 20px;
+}
+
+section#summary h1 {
+   font-size: 1.8em;
+   letter-spacing: 0.1em;
+   line-height: 1.2em;
+   font-weight: normal;
+   margin-bottom: 10px;
+}
+
+section#summary h2 {
+   font-size: 1.25em;
+   font-weight: normal;
+}
+
+section#summary h3 {
+   font-size: 1em;
+   font-weight: normal; 
+   margin-bottom: 20px;  
+}
+
+section#summary > img {
+   display: block;
+   width: 50%;
+   margin: 0px auto;
+}
+
+section#summary p {
+   font-size: 1.2em;
+   text-align: justify;
+}
+
+section#orderSection {
+   -webkit-flex: 1 1 200px;
+   flex: 1 1 200px;
+   margin: 20px;
+}
+   
+/* Order Table Styles */
+
+table#orderTable {
+   margin: 15px;
+   width: 95%;
+   border-collapse: collapse;
+   font-size: 1.3em;
+}
+
+form#orderForm fieldset {
+   border: none;
+   margin-left: -10px;
+}
+
+form#orderForm input[type="text"] {
+   background-color: rgba(240, 233, 222, 0.5);
+}
+
+table#orderTable caption {
+   font-size: 1.6em;
+   font-weight: bold;
+   letter-spacing: 0.2em;
+   text-align: left;
+   caption-side: top;
+   margin-bottom: 20px;
+}
+
+
+table#orderTable td {
+   height: 40px;
+   vertical-align: top;
+}
+
+
+form#orderForm input[type="text"] {
+   color:black;
+}
+
+form#orderForm select {
+   display: inline-block;
+   margin-left: 10px;
+   color: #333;
+}
+
+table#orderTable tr:first-of-type {
+   border-bottom: 1px solid rgb(151, 151, 151);
+}
+
+
+
+table#orderTable tr:first-of-type label {
+   font-size: 1.15em;
+   line-height: 2;
+}
+
+table#orderTable tr:first-of-type select {
+   font-size: 1em;
+}
+
+table#orderTable tr td:last-of-type input {
+   text-align: right;
+   border: none;
+   font-size: 1em;
+}
+
+table#orderTable tr:nth-of-type(2) td {
+   vertical-align: bottom;
+   padding-bottom: 20px;
+}
+
+table#orderTable tr:nth-of-type(2) {
+   border-bottom: 1px white;
+}
+
+table#orderTable tr:nth-of-type(1) td, table#orderTable tr:nth-of-type(3) td {
+   padding-top: 15px;
+}
+
+table#orderTable tr:nth-of-type(4) td {
+   border-bottom: 6px double rgb(151, 151, 151);
+}
+
+table#orderTable tr:last-of-type td {
+   padding-top: 15px;
+}
+
+table#orderTable td.rightA {
+   text-align: right;
+   padding-right: 10px;
+}
+
+table#orderTable legend {
+   font-size: 1.2em;
+   line-height: 2;
+}
+form#orderForm fieldset label {
+   line-height: 2;
+   display: inline-block;
+}
+
+form#orderForm input#buttonAdd {
+   display: block;
+   width: 120px;
+   height: 35px;
+   margin: 15px auto;
+   background-color: white;
+   font-size: 1.3em;
+   border-radius: 20px;
+}
+
+   </style>
+     <script>
+        function calculateCost() {
+            var planCost = parseFloat(document.querySelector('input[name="plan"]:checked').value);
+            var subtotal = planCost;
+            var tax = subtotal * 0.0875;
+            var total = subtotal + tax;
+
+            document.getElementById('planCost').value = planCost.toFixed(2);
+            document.getElementById('subtotal').value = subtotal.toFixed(2);
+            document.getElementById('salesTax').value = tax.toFixed(2);
+            document.getElementById('totalCost').value = total.toFixed(2);
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+       <img src="hubsGymLogo.webp" alt="Hubs Gym" width="2000" height="600"/>
+    </header>
+    
+    
+    <section id="summary">
+       <h1>Join us Today!</h1>
+       <p>At Hubs Gym, we understand that everyone's fitness journey is unique, which is why we offer flexible membership options tailored to your needs. Whether you're looking to commit long-term or prefer a more flexible approach, we have a membership plan that suits you. Our pricing is transparent and competitive, with no hidden fees or surprises. From single-class passes to monthly memberships and family packages, we have options to accommodate every budget and lifestyle. Plus, with our variety of membership tiers, you can access additional perks such as personal training sessions, exclusive classes, and discounts on gym merchandise. Join our fitness community today and take the first step towards achieving your health and wellness goals with Hubs Gym.
+       </p>
+    </section>
+    
+    <section id="orderSection">
+       <form id="orderForm" name="orderForm" method="get" action="ordersubmit.html" onsubmit="calculateCost(); return false;">
+         
+         <table id="orderTable">
+            <caption> Membership prices </caption>
+            <tr>
+                             
+               <td>
+                  <input type="text" name="modelCost" id="modelCost" size="10" readonly />
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2"> 
+                  <fieldset>
+                     <legend>Protection Plan</legend>
+                     <input type="radio" id="plan_0" name="plan" value="0" checked /> <label for="plan_0"> 1 week free trial ($0.00)</label><br>
+                     <input type="radio" id="plan_1" name="plan" value="21.99" /> <label for="plan_1"> Basic Plan ($21.99)</label><br>
+                     <input type="radio" id="plan_2" name="plan" value="25.95" /> <label for="plan_2"> Premium Plan  ($25.95)</label><br>
+                     <input type="radio" id="plan_3" name="plan" value="29.95"  /> <label for="plan_3"> Platinum Card ($29.95)</label>
+                  </fieldset>
+                  <input type="hidden" id="planName" name="planName" />
+               </td>
+               <td>
+                  <input type="text" name="planCost" id="planCost" size="10" readonly />
+               </td>
+            </tr>        
+            <tr>
+               <td colspan="2" class="rightA">Subtotal</td>
+               <td class="outcell">
+                  <input type="text" name="subtotal" id="subtotal" size="10" readonly />
+               </td>
+            </tr>
+ 
+            <tr>
+               <td colspan="2" class="rightA">Tax (8.75%)</td>
+               <td>
+                  <input type="text" name="salesTax" id="salesTax" size="10" readonly />
+               </td>
+            </tr>
+ 
+            <tr>
+               <td colspan="2" class="rightA">TOTAL</td>
+               <td>
+                  <input type="text" name="totalCost" id="totalCost" size="10" readonly />
+               </td>
+            </tr>
+         </table>
+         <input type="submit" id="buttonAdd" value="add to cart" />
+ 
+       </form>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2024 Hub's Gym | 123 Main Street, New York, NY 10001 | Phone: (123) 456-7890</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#"> tik-tok </a></p>
+        <p> <a href="index.html"> <button class="sign-up-btn"> Go Home </button> </a></p>
+      </footer>
+ </body>
+ </html>

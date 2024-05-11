@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs - Gym Name</title>
+    
+   <style>
+   body, html {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #D04B4B;
+}
+
+header {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.navbar h1, .navbar nav {
+    display: inline;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.sign-up-btn {
+    background-color: #D04B4B;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+    background-color: #D04B4B;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.project img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project h3, .project p {
+    margin: 5px 0;
+}
+.footer {
+    background-color: black;
+    color:  #D04B4B;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.footer a {
+    color: #D04B4B;
+    text-decoration: none;
+}
+
+ </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1> Hubs Gym </h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="#contact"> Contact</a></li>
+                    <li><a href="membership.html"> <button class="sign-up-btn">Sign Up</button> </a></li>
+                </ul>
+                
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h2> Our Classes and Facilites </h2>
+        <div class="gallery">
+            <div class="project">
+                <img src="boxing.jpg" alt="Gym interior">
+                <h3> Boxing Classes </h3>
+                <p> Mon, Thurs, Sat</p>
+                <p> 7:00pm- 8:00pm</p>
+            </div>
+            <div class="project">
+                <img src="sauna.webp" alt="Sauna">
+                <h3>Sauna</h3>
+                <p> Mon-Sun</p>
+                <p> 6:00 am- 12:00 pm </p>
+            </div>
+            <div class="project">
+                <img src="pilates.jpeg" alt="Gym weights">
+                <h3>Pilates </h3>
+                <p> Sun, Tues, Thurs, Sat </p>
+                <p> 1-2 pm , 4-5pm, 6-7 pm</p>
+            </div>
+            <div class="project">
+                <img src="pool.jpg" alt="Training area">
+                <p> Mon-Sun</p>
+                <p> 6:00 am- 12:00 pm </p>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Hub's Gym | 123 Main Street, New York, NY 10001 | Phone: (123) 456-7890</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#"> tik-tok </a></p>
+      
+      </footer>
+</body>
+</html>
